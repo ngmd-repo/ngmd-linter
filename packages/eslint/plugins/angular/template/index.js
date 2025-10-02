@@ -1,0 +1,22 @@
+module.exports = {
+    '@angular-eslint/template/alt-text': 'error',
+    '@angular-eslint/template/no-positive-tabindex': 'error',
+    '@angular-eslint/template/valid-aria': 'error',
+    '@angular-eslint/template/no-distracting-elements': 'error',
+    '@angular-eslint/template/no-negated-async': 'error',
+    '@angular-eslint/template/no-duplicate-attributes': 'error',
+    '@angular-eslint/template/elements-content': 'error',
+    '@angular-eslint/template/table-scope': 'error',
+    '@angular-eslint/template/conditional-complexity': ['error', { maxComplexity: 2 }],
+    '@angular-eslint/template/role-has-required-aria': 'error',
+    '@angular-eslint/template/no-inline-styles': 'warn',
+    '@angular-eslint/template/use-track-by-function': 'warn',
+    '@angular-eslint/template/attributes-order': 'off',
+    '@angular-eslint/template/no-any': 'warn',
+    '@angular-eslint/template/no-autofocus': 'warn',
+    '@angular-eslint/template/prefer-self-closing-tags': 'warn',
+    '@angular-eslint/template/no-call-expression': 'off',
+    '@angular-eslint/template/cyclomatic-complexity': 'off',
+    '@angular-eslint/template/interactive-supports-focus': 'off',
+    "@angular-eslint/template/click-events-have-key-events": 'off'
+};

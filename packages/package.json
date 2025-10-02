@@ -1,0 +1,57 @@
+{
+    "name": "@ngmd/linter",
+    "version": "0.0.3",
+    "license": "MIT",
+    "keywords": [
+      "angular",
+      "javascript",
+      "angular-linter",
+      "angular-prettier",
+      "angular-stylelint",
+      "@ngmd"
+    ],
+    "author": {
+      "email": "sxemax1@gmail.com",
+      "name": "Maxim Demidov"
+    },
+    "contributors": [],
+    "publishConfig": {
+      "access": "public"
+    },
+    "dependencies": {
+        "-------ANGULAR-------": "",
+        "angular-eslint": "~18.3.1",
+        "-------ESLINT-------": "",
+        "eslint": "~9.9.1",
+        "eslint-import-resolver-typescript": "~3.6.3",
+        "eslint-plugin-import": "~2.31.0",
+        "eslint-plugin-prettier": "~5.2.1",
+        "eslint-plugin-simple-import-sort": "~12.1.1",
+        "eslint-plugin-unused-imports": "~4.1.4",
+        "-------PRETTIER-------": "",
+        "prettier": "~3.3.3",
+        "prettier-plugin-multiline-arrays": "~3.0.6",
+        "prettier-plugin-organize-attributes": "~1.0.0",
+        "-------STYLELINT-------": "",
+        "stylelint": "~16.10.0",
+        "stylelint-config-clean-order": "~6.1.0",
+        "stylelint-config-prettier-scss": "~1.0.0",
+        "stylelint-config-standard-scss": "~13.1.0",
+        "-------TYPESCRIPT-------": "",
+        "typescript-eslint": "~8.2.0"
+    },
+
+    "exports": {
+    "./package.json": {
+      "default": "./package.json"
+    },
+
+    "./eslint": "./eslint/configs/recommended.js",
+    "./prettier": "./prettier/index.js",
+    "./stylelint": "./stylelint/index.js",
+    "./stylelint-prettier": "./stylelint/prettier.js",
+
+    "./handlers": "./eslint/handlers/eslint.handlers.js",
+    "./constants": "./eslint/constants/eslint.constants.js"
+  }
+}

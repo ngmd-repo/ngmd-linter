@@ -1,0 +1,11 @@
+{
+  "name": "@ngmd/lint",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "repositories for configs eslint, prettier, stylelint, etc.",
+  "license": "MIT",
+  "scripts": {
+    "publish:dev": "node ./scripts/publish-lib.mjs --mode=dev",
+    "publish:prod": "node ./scripts/publish-lib.mjs --mode=prod"
+  }
+}
