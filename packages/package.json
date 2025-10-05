@@ -1,22 +1,22 @@
 {
     "name": "@ngmd/linter",
-    "version": "0.0.4",
+    "version": "0.0.6",
     "license": "MIT",
     "keywords": [
-      "angular",
-      "javascript",
-      "angular-linter",
-      "angular-prettier",
-      "angular-stylelint",
-      "@ngmd"
+        "angular",
+        "javascript",
+        "angular-linter",
+        "angular-prettier",
+        "angular-stylelint",
+        "@ngmd"
     ],
     "author": {
-      "email": "sxemax1@gmail.com",
-      "name": "Maxim Demidov"
+        "email": "sxemax1@gmail.com",
+        "name": "Maxim Demidov"
     },
     "contributors": [],
     "publishConfig": {
-      "access": "public"
+        "access": "public"
     },
     "dependencies": {
         "angular-eslint": "~18.3.1",
@@ -35,18 +35,18 @@
         "stylelint-config-standard-scss": "~13.1.0",
         "typescript-eslint": "~8.2.0"
     },
-
     "exports": {
-    "./package.json": {
-      "default": "./package.json"
+        "./package.json": {
+            "default": "./package.json"
+        },
+        "./eslint": "./eslint/index.js",
+        "./prettier": "./prettier/index.js",
+        "./stylelint": "./stylelint/index.js",
+        "./stylelint-prettier": "./stylelint/prettier.js",
+        "./handlers": "./eslint/handlers/eslint.handlers.js",
+        "./constants": "./eslint/constants/eslint.constants.js"
     },
-
-    "./eslint": "./eslint/configs/recommended.js",
-    "./prettier": "./prettier/index.js",
-    "./stylelint": "./stylelint/index.js",
-    "./stylelint-prettier": "./stylelint/prettier.js",
-
-    "./handlers": "./eslint/handlers/eslint.handlers.js",
-    "./constants": "./eslint/constants/eslint.constants.js"
-  }
+    "bin": {
+        "ngmd-linter": "./cli/index.js"
+    }
 }

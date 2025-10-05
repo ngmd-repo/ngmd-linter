@@ -1,6 +1,6 @@
 const tseslint = require('typescript-eslint');
-const DEFAULT_LINT_IGNORES = require('../constants/eslint.constants')
-const recommendedConfig = require('../configs/recommended');
+const DEFAULT_LINT_IGNORES = require('./constants/eslint.constants')
+const recommendedConfig = require('./configs/recommended');
 
 function expandLintIgnores(ignores) {
     return DEFAULT_LINT_IGNORES.concat(ignores)

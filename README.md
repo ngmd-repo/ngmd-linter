@@ -1,82 +1,239 @@
 # @ngmd/linter
 
-## Getting started
+🔧 **Comprehensive linting solution for Angular projects**
 
-Библиотека для линтинга проектов @ngmd/\*
+The `@ngmd/linter` library provides ready-to-use configurations for ESLint, Prettier, and Stylelint for Angular projects. Includes automatic setup of all necessary linters and formatters.
 
-### Установка (от версии @0.0.1 и выше)
+## ✨ Features
 
-```sh
-npm i -D @ngmd/linter
-yarn add -D @ngmd/linter
+- 🔍 **ESLint configuration** with Angular-specific rules
+- 💅 **Prettier formatting** for consistent code style
+- 🎨 **Stylelint settings** for SCSS and CSS files
+- ⚡ **Zero-config setup** - works out of the box
+- 📦 **Modular architecture** - use only the components you need
+- 🔧 **Extensible configurations** for project customization
+
+## 📋 Included tools
+
+### ESLint plugins and rules
+
+- `@angular-eslint` - Angular-specific rules
+- `@typescript-eslint` - TypeScript support
+- `eslint-plugin-import` - import checks
+- `eslint-plugin-prettier` - Prettier integration
+- `eslint-plugin-simple-import-sort` - import sorting
+- `eslint-plugin-unused-imports` - unused imports removal
+
+### Prettier configuration
+
+- Automatic formatting for TypeScript, HTML, CSS/SCSS
+- Angular template support
+- HTML attribute organization
+- Multi-line array formatting
+
+### Stylelint rules
+
+- Standard SCSS rules
+- Prettier integration
+- CSS property ordering
+
+## 🚀 Quick start
+
+### 1. Installation
+
+```bash
+npm install @ngmd/linter --save-dev
 ```
 
-### Подключение
+### 2. CLI initialization
 
-- Копируем все файлы из папки <span style="color:#ed5a2b; font-size:16px;">rules</span>:
+> ⚡ **Quick setup with one command**
 
-  ![Директория](docs/images/image-1.png)
+For automatic setup of the entire project, run the command from the root directory:
 
-- Вставляем все скопированные файлы в корень рабочей директории:
+```bash
+npx ngmd-linter
+```
 
-  ![Директория](docs/images/image-2.png)
+**What the command does:**
 
-- В файле <span style="color:#ed5a2b; font-size:16px;">tsconfig.json</span> устанавливаем правило **_strictNullChecks_** в значение **_false_**:
+- ✅ Creates configuration files for ESLint, Prettier, and Stylelint
+- ✅ Sets up all necessary rules automatically
+- ✅ Integrates with existing Angular project structure
 
-  ```json
-    compilerOptions: {
-      "strictNullChecks": false,
-    }
-  ```
+**Requirements:**
 
-- В файле <span style="color:#ed5a2b; font-size:16px;">angular.json</span> добавляем команду для линтинга:
+- The command must be run from the Angular project root (where `angular.json` is located)
+- The project must not have existing `.prettierignore`, `.prettierrc.js`, `eslint.config.js`, `stylelint.config.js` files
 
-  ```json
-    "lint": {
-      "builder": "@angular-eslint/builder:lint",
-      "options": {
-        "lintFilePatterns": ["<PATH>/**/*.html", "<PATH>/**/*.ts"]
-      }
-    }
+**Usage example:**
 
-  Заменить пути к проекту можно следующим образом:
-      "lint": {
-        "builder": "@angular-eslint/builder:lint",
-        "options": {
-          "lintFilePatterns": [
-            "src/**/*.ts",
-            "src/**/*.html"
-          ]
+```bash
+cd your-angular-project
+npx ngmd-linter
+# ✅ Project is configured and ready to go!
+```
+
+> ⚡ **After automatic setup, it's recommended to reload your IDE**
+
+### 3. Manual setup (alternative method)
+
+#### 3.1. ESLint setup
+
+Create an `eslint.config.js` file in the root of your project:
+
+```javascript
+const { useAggregatorConfigs } = require("@ngmd/linter/handlers");
+
+module.exports = useAggregatorConfigs();
+```
+
+#### 3.2. Stylelint setup
+
+Create a `stylelint.config.js` file:
+
+```javascript
+const stylelintConfig = require("@ngmd/linter/stylelint");
+
+module.exports = stylelintConfig;
+```
+
+#### 3.3. Prettier setup
+
+Create a `.prettierrc.js` file:
+
+```javascript
+const prettierConfig = require("@ngmd/linter/prettier");
+
+module.exports = prettierConfig;
+```
+
+#### 3.3. Prettier ignore setup
+
+Create a `.prettierignore.js` file:
+
+```javascript
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+# Compiled output
+/dist
+/tmp
+/out-tsc
+/bazel-out
+# Node
+/node_modules
+npm-debug.log
+yarn-error.log
+# IDEs and editors
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+# Visual Studio Code
+.vscode
+.history/*
+# Miscellaneous
+/.angular/cache
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
+# System files
+.DS_Store
+Thumbs.db
+**/*.md
+```
+
+#### 3.4. Updating tsconfig.json
+
+In the `tsconfig.json` file, set:
+
+```json
+{
+  "compilerOptions": {
+    "strictNullChecks": false
+  }
+}
+```
+
+#### 3.5. Adding scripts to angular.json
+
+```json
+{
+  "projects": {
+    "your-project": {
+      "architect": {
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
+          }
         }
       }
-  ```
+    }
+  }
+}
+```
 
-### Переопределение правил для потребителя
+> ⚡ **After manual setup, it's recommended to reload your IDE**
 
-- Для переопределения правил в eslint необходимо соблюдать следующую структуру в файле <span style="color:#ed5a2b; font-size:16px;">esling.config.js</span>:
+## 📚 Detailed guide
 
-```js
+### Project structure after setup
+
+```
+your-angular-project/
+├── eslint.config.js              # ESLint configuration
+├── .prettierrc.js                # Prettier configuration
+├── stylelint.config.js           # Stylelint configuration
+├── .prettierignore               # ignored files for Prettier
+└── angular.json                  # updated with lint commands
+```
+
+### Using modular exports
+
+```javascript
+// ESLint configuration only
+const eslintConfig = require("@ngmd/linter/eslint");
+
+// Prettier configuration only
+const prettierConfig = require("@ngmd/linter/prettier");
+
+// Stylelint configuration only
+const stylelintConfig = require("@ngmd/linter/stylelint");
+
+// Separate Stylelint configuration with Prettier
+const stylelintPrettierConfig = require("@ngmd/linter/stylelint-prettier");
+
+// Utility functions
+const {
+  useAggregatorConfigs,
+  expandLintIgnores,
+} = require("@ngmd/linter/handlers");
+const { DEFAULT_LINT_IGNORES } = require("@ngmd/linter/constants");
+```
+
+### Rule overriding and extending
+
+```javascript
 const {
   useAggregatorConfigs,
   expandLintIgnores,
 } = require("@ngmd/linter/handlers");
 
 const configOverrideSettings = {
-  ignores: expandLintIgnores(["assets"]), // можно расширить дефолтный список игнорируемых файлов для линтера (просмотреть
-  // список дефолтов можно в константе DEFAULT_LINT_IGNORES).
-  // ignores: ['assets'], // или перезаписать уже существующие дефолты своими
+  // Extending the list of ignored files
+  ignores: expandLintIgnores(["dist", "coverage"]),
 
+  // Rule overrides (minimal configuration is preferred)
   overrides: [
     {
-      files: ["**/*.ts"], // расширение файлов, для которых предназначены перечисляемые ниже правила (это важно указывать,
-      // потому что без указания этого массива линтер не поймет, какие ему нужны плагины для работы перечисляемых ниже
-      // правил. Например, для добавления или переопределения правил '@angular-eslint/template'
-      // необходимо указывать '**/*/html', и тогда линтер подхватит нужный ему плагин, который уже установился
-      // вместе с установкой этой библиотеки (в данном случае
-      // плагин 'template', который работает с html-шаблонами Ангуляра).
-
+      files: ["**/*.ts"],
       rules: {
-        // сами переопределямые правила:
         "@angular-eslint/component-selector": [
           "error",
           {
@@ -101,4 +258,57 @@ const configOverrideSettings = {
 module.exports = useAggregatorConfigs(configOverrideSettings);
 ```
 
-<span style="color: red; font-size:24px;">ПЕРЕОПРЕДЕЛЯТЬ СУЩЕСТВУЮЩИЕ ПРАВИЛА ЛИНТЕРА КРАЙНЕ НЕ РЕКОМЕНДУЕТСЯ! ДЛЯ ЭТОГО ДОЛЖО БЫТЬ КАКОЕ-ТО ОБОСНОВАНИЕ, КОТОРОЕ СТОИТ ОБСУДИТЬ. ТО ЖЕ САМОЕ МОЖНО СКАЗАТЬ И ПРО ДОБАВЛЕНИЕ НОВЫХ ПРАВИЛ, ТК ЭТО ЧРЕВАТО ПОГРУЖЕНИЕМ В ТЕМУ РАБОТЫ ПО НАСТРОЙКЕ КОНФИГА И ВЫ НЕ ВСЕГДА СМОЖЕТЕ ОГРАНИЧИТЬСЯ ПРИВЕДЕННЫМ ПРИМЕРОМ ПО ОВЕРРАЙДУ ВЫШЕ, ТК ИМЕЕТСЯ РЯД ТОНКИХ НАСТРОЕК ПО РАБОТЕ ОПРЕДЕЛЕННЫХ ПРАВИЛ (PLUGINS, SETTINGS и тд)</span>
+### Running commands
+
+```bash
+# Run linting through Angular CLI
+ng lint
+
+# Direct ESLint run
+npx eslint src/**/*.ts
+
+# Formatting with Prettier
+npx prettier --write src/**/*.{ts,html,scss}
+
+# Style checking with Stylelint
+npx stylelint src/**/*.{css,scss}
+```
+
+## 🔧 Troubleshooting
+
+### The npx ngmd-linter command doesn't work
+
+1. Make sure the package is installed: `npm list @ngmd/linter`
+
+### Conflicts with existing configurations
+
+1. Make a backup of existing files
+2. Remove old ESLint/Prettier/Stylelint configurations
+3. Run `npx ngmd-linter` again
+
+### Linting errors in existing code
+
+1. Run auto-fix: `ng lint --fix`
+2. For bulk changes use: `npx prettier --write src/`
+3. Add exceptions to configuration if necessary
+
+## 📦 Dependencies
+
+The package includes the following dependencies:
+
+- `angular-eslint` ~18.3.1
+- `eslint` ~9.9.1
+- `prettier` ~3.3.3
+- `stylelint` ~16.10.0
+- `typescript-eslint` ~8.2.0
+
+## 🔄 Compatibility
+
+- **Angular:** 15+
+- **Node.js:** 16+
+- **TypeScript:** 4.8+
+- **npm:** 8+
+
+## 📄 License
+
+MIT © [Maxim Demidov](mailto:sxemax1@gmail.com)

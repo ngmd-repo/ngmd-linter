@@ -36,8 +36,7 @@ const baseConfig = {
         },
         {
             files: [
-                '*.component.html',
-                '*.template.html',
+              '*.html',
             ],
             options: {
                 parser: 'angular',
