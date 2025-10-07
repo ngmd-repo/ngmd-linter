@@ -1,7 +1,6 @@
 {
   "name": "@ngmd/lint",
   "version": "0.0.1",
-  "type": "module",
   "description": "repositories for configs eslint, prettier, stylelint, etc.",
   "license": "MIT",
   "scripts": {
