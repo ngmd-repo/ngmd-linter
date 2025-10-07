@@ -6,6 +6,10 @@
   "license": "MIT",
   "scripts": {
     "publish:dev": "node ./scripts/publish-lib.mjs --mode=dev",
-    "publish:prod": "node ./scripts/publish-lib.mjs --mode=prod"
+    "publish:prod": "node ./scripts/publish-lib.mjs --mode=prod",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@ngmd/git-flow": "~0.0.1"
   }
 }
