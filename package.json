@@ -9,6 +9,6 @@
     "prepare": "husky"
   },
   "devDependencies": {
-    "@ngmd/git-flow": "~0.0.2"
+    "@ngmd/git-flow": "~0.0.3"
   }
 }
