@@ -14,9 +14,13 @@
         "email": "sxemax1@gmail.com",
         "name": "Maxim Demidov"
     },
+    "repository": {
+      "url": "https://github.com/ngmd-repo/ngmd-linter"
+    },
     "contributors": [],
     "publishConfig": {
-        "access": "public"
+        "access": "public",
+        "provenance": true
     },
     "dependencies": {
         "angular-eslint": "~18.3.1",
