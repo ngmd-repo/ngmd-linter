@@ -74,6 +74,30 @@ npx ngmd-linter
 # ✅ Проект настроен и готов к работе!
 ```
 
+**Удалить prettier блок из package.json**
+
+Если при создании проекта через `@angular/cli` был добавлен блок **prettier** в корневой `package.json`, то этот блок нужно удалить
+
+```json
+// package.json
+{
+  // Удалить блок полностью
+  "prettier": {
+    "printWidth": 100,
+    "singleQuote": true,
+    "overrides": [
+      {
+        "files": "*.html",
+        "options": {
+          "parser": "angular"
+        }
+      }
+    ]
+  }
+  // Удалить блок полностью
+}
+```
+
 > ⚡ **После автоматического подключения желательно перезагрузить вашу IDE**
 
 ### 3. Ручная настройка (альтернативный способ)
@@ -83,7 +107,7 @@ npx ngmd-linter
 Создайте в корне вашего проекта файл `eslint.config.js`:
 
 ```javascript
-const { useAggregatorConfigs } = require("@ngmd/linter/handlers");
+const { useAggregatorConfigs } = require("@ngmd/linter/eslint");
 
 module.exports = useAggregatorConfigs();
 ```
@@ -93,9 +117,9 @@ module.exports = useAggregatorConfigs();
 Создайте файл `stylelint.config.js`:
 
 ```javascript
-const stylelintConfig = require("@ngmd/linter/stylelint");
+const useStylelintConfig = require("@ngmd/linter/stylelint");
 
-module.exports = stylelintConfig;
+module.exports = useStylelintConfig();
 ```
 
 #### 3.3. Настройка Prettier
@@ -110,7 +134,7 @@ module.exports = prettierConfig;
 
 #### 3.3. Настройка Prettier Ignore
 
-Создайте файл `.prettierignore.js`;
+Создайте файл `.prettierignore`;
 
 ```javascript
 # See http://help.github.com/ignore-files/ for more about ignoring files.
@@ -194,36 +218,15 @@ your-angular-project/
 └── angular.json                  # обновленный с lint командами
 ```
 
-### Использование модульных экспортов
-
-```javascript
-// Только ESLint конфигурация
-const eslintConfig = require("@ngmd/linter/eslint");
-
-// Только Prettier конфигурация
-const prettierConfig = require("@ngmd/linter/prettier");
-
-// Только Stylelint конфигурация
-const stylelintConfig = require("@ngmd/linter/stylelint");
-
-// Отдельная Stylelint конфигурация с Prettier
-const stylelintPrettierConfig = require("@ngmd/linter/stylelint-prettier");
-
-// Вспомогательные функции
-const {
-  useAggregatorConfigs,
-  expandLintIgnores,
-} = require("@ngmd/linter/handlers");
-const { DEFAULT_LINT_IGNORES } = require("@ngmd/linter/constants");
-```
-
 ### Переопределение и расширение правил
 
+#### Eslint
+
 ```javascript
 const {
   useAggregatorConfigs,
   expandLintIgnores,
-} = require("@ngmd/linter/handlers");
+} = require("@ngmd/linter/eslint");
 
 const configOverrideSettings = {
   // Расширение списка игнорируемых файлов
@@ -238,7 +241,7 @@ const configOverrideSettings = {
           "error",
           {
             type: "element",
-            prefix: ["ng"],
+            prefix: ["my-prefix"],
             style: "kebab-case",
           },
         ],
@@ -246,7 +249,7 @@ const configOverrideSettings = {
           "error",
           {
             type: "attribute",
-            prefix: ["ng"],
+            prefix: ["my-prefix"],
             style: "camelCase",
           },
         ],
@@ -257,6 +260,23 @@ const configOverrideSettings = {
 
 module.exports = useAggregatorConfigs(configOverrideSettings);
 ```
+
+#### Stylelint
+
+```js
+const useStylelintConfig = require("@ngmd/linter/stylelint");
+
+module.exports = useStylelintConfig({
+  plugins: ["your-plugins"],
+  rules: {
+    // ... your rules
+  },
+});
+```
+
+#### Prettier
+
+Для prettier на данный момент не предусмотрена возможность изменения конфигурации
 
 ### Команды для запуска
 
