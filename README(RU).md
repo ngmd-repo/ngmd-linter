@@ -83,7 +83,7 @@ npx ngmd-linter
 Создайте в корне вашего проекта файл `eslint.config.js`:
 
 ```javascript
-const { useAggregatorConfigs } = require("@ngmd/linter/handlers");
+const { useAggregatorConfigs } = require('@ngmd/linter/eslint');
 
 module.exports = useAggregatorConfigs();
 ```
@@ -93,9 +93,15 @@ module.exports = useAggregatorConfigs();
 Создайте файл `stylelint.config.js`:
 
 ```javascript
-const stylelintConfig = require("@ngmd/linter/stylelint");
-
-module.exports = stylelintConfig;
+module.exports = {
+  extends: [
+    '@ngmd/linter/stylelint',
+    '@ngmd/linter/stylelint-prettier',
+  ],
+  rules: {
+    // ... your rules if needs
+  }
+};
 ```
 
 #### 3.3. Настройка Prettier
@@ -103,14 +109,19 @@ module.exports = stylelintConfig;
 Создайте файл `.prettierrc.js`:
 
 ```javascript
-const prettierConfig = require("@ngmd/linter/prettier");
+const base = require('@ngmd/linter/prettier');
 
-module.exports = prettierConfig;
+module.exports = {
+  ...base,
+  overrides: [
+    ...base.overrides,
+  ],
+};
 ```
 
 #### 3.3. Настройка Prettier Ignore
 
-Создайте файл `.prettierignore.js`;
+Создайте файл `.prettierignore`;
 
 ```javascript
 # See http://help.github.com/ignore-files/ for more about ignoring files.
@@ -213,17 +224,14 @@ const stylelintPrettierConfig = require("@ngmd/linter/stylelint-prettier");
 const {
   useAggregatorConfigs,
   expandLintIgnores,
-} = require("@ngmd/linter/handlers");
+} = require("@ngmd/linter/eslint");
 const { DEFAULT_LINT_IGNORES } = require("@ngmd/linter/constants");
 ```
 
 ### Переопределение и расширение правил
 
 ```javascript
-const {
-  useAggregatorConfigs,
-  expandLintIgnores,
-} = require("@ngmd/linter/handlers");
+const { useAggregatorConfigs, expandLintIgnores } = require('@ngmd/linter/eslint');
 
 const configOverrideSettings = {
   // Расширение списка игнорируемых файлов
