@@ -122,7 +122,15 @@ const useStylelintConfig = require("@ngmd/linter/stylelint");
 module.exports = useStylelintConfig();
 ```
 
-#### 3.3. Настройка Prettier
+#### 3.3. Настройка Stylelint ignore
+
+Создайте файл `.stylelintignore`:
+
+```md
+dist
+```
+
+#### 3.4. Настройка Prettier
 
 Создайте файл `.prettierrc.js`:
 
@@ -135,7 +143,7 @@ module.exports = {
 };
 ```
 
-#### 3.3. Настройка Prettier Ignore
+#### 3.5. Настройка Prettier Ignore
 
 Создайте файл `.prettierignore`;
 
@@ -175,7 +183,7 @@ Thumbs.db
 **/*.md
 ```
 
-#### 3.4. Обновление tsconfig.json
+#### 3.6. Обновление tsconfig.json
 
 В файле `tsconfig.json` установите:
 
@@ -187,7 +195,7 @@ Thumbs.db
 }
 ```
 
-#### 3.5. Добавление скриптов в angular.json
+#### 3.7. Добавление скриптов в angular.json
 
 ```json
 {
@@ -216,8 +224,9 @@ Thumbs.db
 your-angular-project/
 ├── eslint.config.js              # конфигурация ESLint
 ├── .prettierrc.js                # конфигурация Prettier
-├── stylelint.config.js           # конфигурация Stylelint
 ├── .prettierignore               # игнорируемые файлы для Prettier
+├──  stylelint.config.js          # конфигурация Stylelint
+├── .stylelintignore              # игнорируемые файлы для Stylelint
 └── angular.json                  # обновленный с lint командами
 ```
 

@@ -122,7 +122,15 @@ const useStylelintConfig = require("@ngmd/linter/stylelint");
 module.exports = useStylelintConfig();
 ```
 
-#### 3.3. Prettier setup
+#### 3.3. Stylelint ignore setup
+
+Create a `.stylelintignore` file:
+
+```md
+dist
+```
+
+#### 3.4. Prettier setup
 
 Create a `.prettierrc.js` file:
 
@@ -132,33 +140,43 @@ const prettierConfig = require("@ngmd/linter/prettier");
 module.exports = prettierConfig;
 ```
 
-#### 3.3. Prettier ignore setup
+#### 3.5. Prettier ignore setup
 
 Create a `.prettierignore` file:
 
-```javascript
+```md
 # See http://help.github.com/ignore-files/ for more about ignoring files.
+
 # Compiled output
+
 /dist
 /tmp
 /out-tsc
 /bazel-out
+
 # Node
+
 /node_modules
 npm-debug.log
 yarn-error.log
+
 # IDEs and editors
+
 .idea/
 .project
 .classpath
 .c9/
-*.launch
+_.launch
 .settings/
-*.sublime-workspace
+_.sublime-workspace
+
 # Visual Studio Code
+
 .vscode
-.history/*
+.history/\*
+
 # Miscellaneous
+
 /.angular/cache
 .sass-cache/
 /connect.lock
@@ -166,13 +184,14 @@ yarn-error.log
 /libpeerconnection.log
 testem.log
 /typings
+
 # System files
-.DS_Store
-Thumbs.db
-**/*.md
+
+.DS\*Store
+Thumbs.db \*\*/\_.md
 ```
 
-#### 3.4. Updating tsconfig.json
+#### 3.6. Updating tsconfig.json
 
 In the `tsconfig.json` file, set:
 
@@ -184,7 +203,7 @@ In the `tsconfig.json` file, set:
 }
 ```
 
-#### 3.5. Adding scripts to angular.json
+#### 3.7. Adding scripts to angular.json
 
 ```json
 {
@@ -213,8 +232,9 @@ In the `tsconfig.json` file, set:
 your-angular-project/
 ├── eslint.config.js              # ESLint configuration
 ├── .prettierrc.js                # Prettier configuration
-├── stylelint.config.js           # Stylelint configuration
 ├── .prettierignore               # ignored files for Prettier
+├── stylelint.config.js           # Stylelint configuration
+├── .stylelintignore              # ignored files for Stylelint
 └── angular.json                  # updated with lint commands
 ```
 
