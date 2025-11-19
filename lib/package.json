@@ -1,6 +1,6 @@
 {
     "name": "@ngmd/linter",
-    "version": "$(version)",
+    "version": "0.0.0",
     "license": "MIT",
     "keywords": [
         "angular",
@@ -15,7 +15,7 @@
         "name": "Maxim Demidov"
     },
     "repository": {
-      "url": "https://github.com/ngmd-repo/ngmd-linter"
+        "url": "https://github.com/ngmd-repo/ngmd-linter"
     },
     "contributors": [],
     "publishConfig": {
@@ -23,21 +23,21 @@
         "provenance": true
     },
     "dependencies": {
-        "angular-eslint": "~18.3.1",
-        "eslint": "~9.9.1",
-        "eslint-import-resolver-typescript": "~3.6.3",
-        "eslint-plugin-import": "~2.31.0",
-        "eslint-plugin-prettier": "~5.2.1",
+        "angular-eslint": "~20.6.0",
+        "eslint": "~9.39.1",
+        "eslint-import-resolver-typescript": "~4.4.4",
+        "eslint-plugin-import": "~2.32.0",
+        "eslint-plugin-prettier": "~5.5.4",
         "eslint-plugin-simple-import-sort": "~12.1.1",
-        "eslint-plugin-unused-imports": "~4.1.4",
-        "prettier": "~3.3.3",
-        "prettier-plugin-multiline-arrays": "~3.0.6",
+        "eslint-plugin-unused-imports": "~4.3.0",
+        "prettier": "~3.6.2",
+        "prettier-plugin-multiline-arrays": "~4.0.3",
         "prettier-plugin-organize-attributes": "~1.0.0",
-        "stylelint": "~16.10.0",
-        "stylelint-config-clean-order": "~6.1.0",
+        "stylelint": "~16.25.0",
+        "stylelint-config-clean-order": "~7.0.0",
         "stylelint-config-prettier-scss": "~1.0.0",
-        "stylelint-config-standard-scss": "~13.1.0",
-        "typescript-eslint": "~8.2.0"
+        "stylelint-config-standard-scss": "~16.0.0",
+        "typescript-eslint": "~8.47.0"
     },
     "exports": {
         "./package.json": {
