@@ -127,9 +127,12 @@ module.exports = useStylelintConfig();
 Создайте файл `.prettierrc.js`:
 
 ```javascript
-const prettierConfig = require("@ngmd/linter/prettier");
+const base = require("@ngmd/linter/prettier");
 
-module.exports = prettierConfig;
+module.exports = {
+  ...base,
+  overrides: [...base.overrides],
+};
 ```
 
 #### 3.3. Настройка Prettier Ignore
