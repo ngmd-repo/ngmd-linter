@@ -249,9 +249,10 @@ const {
 } = require("@ngmd/linter/eslint");
 
 const configOverrideSettings = {
+  // Override tsconfig path
+  tsConfig: "./tsconfig.eslint.json",
   // Expanding the list of ignored files
   ignores: expandLintIgnores(["dist", "coverage"]),
-
   // Redefining rules (only minimal configuration is desirable)
   overrides: [
     {
