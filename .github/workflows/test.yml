@@ -14,4 +14,4 @@ jobs:
           echo "MY_CLIENT_ID (****)    = ${MY_CLIENT_ID}"
           echo "MY_CLIENT_ID (base64) = $(echo ${MY_CLIENT_ID} | base64)"
           echo "Copy the above value, and then execute locally:"
-          echo "echo PASTE_HERE | base64 -D"
+          echo "echo PASTE | base64 -D"
